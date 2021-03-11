@@ -5,6 +5,10 @@
  */
 package pos.system;
 
+import Domain.Sales.Store;
+import TechnicalServices.Persistence.Register;
+import UI.ProcessSaleJFrame;
+
 /**
  *
  * @author User
@@ -15,7 +19,10 @@ public class POSSystem {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Store store = Store.instance;
+        store.setName("Lebanon");
+        Register register = store.getRegister();
+        ProcessSaleJFrame frame = new ProcessSaleJFrame(register);
     }
     
 }

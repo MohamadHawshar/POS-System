@@ -7,7 +7,7 @@ package Domain.Sales;
 
 import Domain.Sales.Item;
 import TechnicalServices.Persistence.DataSource;
-import TechnicalServices.Persistence.ItemsController;
+import TechnicalServices.Persistence.TransferFromDB;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,14 +22,14 @@ import java.util.logging.Logger;
  */
 public class ProductCatalog {
 
-    private Map<Integer, Item> descriptions = new HashMap< Integer, Item>();
+    public Map<Integer, Item> descriptions = new HashMap< Integer, Item>();
 
     public ProductCatalog() {
         loadSpecs();
     }
 
     public void loadSpecs() {
-        ResultSet set = ItemsController.instance.getCatalog();
+        ResultSet set = TransferFromDB.instance.getCatalog();
         int idItem;
         float price;
         String itemName;

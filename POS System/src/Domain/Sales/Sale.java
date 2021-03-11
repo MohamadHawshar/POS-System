@@ -6,6 +6,7 @@
 package Domain.Sales;
 
 import Domain.Payments.Payment;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,7 @@ import java.util.List;
 public class Sale {
     private boolean isComplete;
     private Payment payment;
+    private Date date;
     private List<SalesLineItem> ls = new ArrayList<>();
 
     public Sale(boolean isComplete) {

@@ -22,8 +22,9 @@ public class Store {
     ProductCatalog productCatalog = new ProductCatalog();
     private List<Sale> SalesList = new ArrayList<>();
 
-    public Store() {
-        register = new Register(productCatalog);
+    private Store() {
+        register = Register.instance;
+        register.setProductCatalog(productCatalog);
     }
     
     
@@ -56,5 +57,5 @@ public class Store {
     public String toString() {
         return "Store{" + "location=" + location + ", name=" + name + '}';
     }
-    
+    public static final Store instance = new Store();
 }

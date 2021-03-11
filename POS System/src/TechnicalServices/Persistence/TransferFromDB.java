@@ -16,15 +16,14 @@ import java.util.logging.Logger;
  *
  * @author User
  */
-public class ItemsController {
-    //Item item; should not have entities.
+public class TransferFromDB {
     
     private String findItemByKeyString = "select * from Item where idItem = ?";
     private String findAllItemsString = "select * from Item ";
     private PreparedStatement findItemByKeyStmt;
     private PreparedStatement findAllItemsStmt;
     
-    private ItemsController(){
+    private TransferFromDB(){
         try {
             findItemByKeyStmt = DataSource.getConnection().prepareStatement(findItemByKeyString);
             findAllItemsStmt = DataSource.getConnection().prepareStatement(findAllItemsString);
@@ -39,7 +38,7 @@ public class ItemsController {
             ResultSet set = findItemByKeyStmt.executeQuery();
             return set;
         } catch (SQLException ex) {
-            Logger.getLogger(ItemsController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TransferFromDB.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -49,9 +48,9 @@ public class ItemsController {
             ResultSet set = findAllItemsStmt.executeQuery();
             return set;
         } catch (SQLException ex) {
-            Logger.getLogger(ItemsController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TransferFromDB.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
-    public static final ItemsController instance = new ItemsController();
+    public static final TransferFromDB instance = new TransferFromDB();
 }
