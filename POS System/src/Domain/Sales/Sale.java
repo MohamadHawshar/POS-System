@@ -19,6 +19,7 @@ public class Sale {
     private Payment payment;
     private Date date;
     private List<SalesLineItem> ls = new ArrayList<>();
+    private Date date;
 
     public Sale(boolean isComplete) {
         this.isComplete = isComplete;
