@@ -19,9 +19,18 @@ public class Store {
     private String location;
     private String name;
     private Register register;
-    private List<Sale> ls = new ArrayList<>();
-    private Map <Integer, Item> descriptions = new HashMap< Integer, Item>() ;
+    ProductCatalog productCatalog = new ProductCatalog();
+    private List<Sale> SalesList = new ArrayList<>();
 
+    public Store() {
+        register = new Register(productCatalog);
+    }
+    
+    
+    public Register getRegister() {
+        return register;
+    }
+    
     public Store(String location, String name) {
         this.location = location;
         this.name = name;

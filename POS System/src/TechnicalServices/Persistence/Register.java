@@ -5,6 +5,7 @@
  */
 package TechnicalServices.Persistence;
 
+import Domain.Sales.ProductCatalog;
 import Domain.Sales.Sale;
 
 /**

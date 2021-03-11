@@ -22,10 +22,10 @@ public class DataSource {
     public static Connection getConnection() {
       	// --- Pour une connexion MySQL native
         String lsPilote    = "com.mysql.jdbc.Driver";
-	String lsConnexion = "jdbc:mysql://localhost:330/mydb";
+	String lsConnexion = "jdbc:mysql://localhost:330/POS";
 
 	String lsUt  = "root";
-	String lsMdp = "root";
+	String lsMdp = "database";
         
         if (con == null) {
             try {
