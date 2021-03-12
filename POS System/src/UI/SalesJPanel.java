@@ -53,7 +53,7 @@ public class SalesJPanel extends javax.swing.JPanel {
         menu.setPreferredSize(new java.awt.Dimension(100, 80));
         menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        newSale.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(170, 170, 170), new java.awt.Color(170, 170, 170), null, null));
+        newSale.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 1, new java.awt.Color(170, 170, 170)));
         newSale.setMinimumSize(new java.awt.Dimension(100, 80));
         newSale.setPreferredSize(new java.awt.Dimension(100, 80));
         newSale.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -72,22 +72,22 @@ public class SalesJPanel extends javax.swing.JPanel {
             .addGroup(newSaleLayout.createSequentialGroup()
                 .addComponent(pic, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                .addGap(5, 5, 5))
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                .addContainerGap())
         );
         newSaleLayout.setVerticalGroup(
             newSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(newSaleLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(newSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                    .addComponent(pic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(pic, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 24, Short.MAX_VALUE))
         );
 
         menu.add(newSale, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 2, 224, 70));
 
-        waitingList.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(170, 170, 170), new java.awt.Color(170, 170, 170), null, null));
+        waitingList.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 1, new java.awt.Color(170, 170, 170)));
         waitingList.setMinimumSize(new java.awt.Dimension(100, 80));
 
         pic1.setText("jLabel1");
@@ -102,7 +102,7 @@ public class SalesJPanel extends javax.swing.JPanel {
             .addGroup(waitingListLayout.createSequentialGroup()
                 .addComponent(pic1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                 .addContainerGap())
         );
         waitingListLayout.setVerticalGroup(
@@ -110,14 +110,14 @@ public class SalesJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, waitingListLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(waitingListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pic1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pic1, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         menu.add(waitingList, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 2, 210, 70));
 
-        printReceipt.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(170, 170, 170), new java.awt.Color(170, 170, 170), null, null));
+        printReceipt.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 1, new java.awt.Color(170, 170, 170)));
         printReceipt.setMinimumSize(new java.awt.Dimension(100, 80));
 
         pic2.setText("jLabel1");
@@ -140,8 +140,8 @@ public class SalesJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, printReceiptLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(printReceiptLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pic2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                    .addComponent(pic2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
