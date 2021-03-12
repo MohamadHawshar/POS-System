@@ -11,11 +11,13 @@ package UI;
  */
 public class SalesJPanel extends javax.swing.JPanel {
 
-    private NewSaleJPanel newSaleJFrame=new NewSaleJPanel();
+    private NewSaleJPanel newSaleJFrame = new NewSaleJPanel();
+
     /**
      * Creates new form SalesJPanel
      */
     public SalesJPanel() {
+       
         initComponents();
     }
 
@@ -35,20 +37,23 @@ public class SalesJPanel extends javax.swing.JPanel {
         waitingList = new javax.swing.JPanel();
         pic1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        waitingList1 = new javax.swing.JPanel();
+        printReceipt = new javax.swing.JPanel();
         pic2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
 
-        menu.setBackground(new java.awt.Color(255, 204, 204));
+        menu.setBackground(new java.awt.Color(241, 241, 241));
         menu.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.darkGray));
         menu.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         menu.setMinimumSize(new java.awt.Dimension(100, 80));
         menu.setPreferredSize(new java.awt.Dimension(100, 80));
+        menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        newSale.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(170, 170, 170), new java.awt.Color(170, 170, 170), null, null));
         newSale.setMinimumSize(new java.awt.Dimension(100, 80));
         newSale.setPreferredSize(new java.awt.Dimension(100, 80));
         newSale.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -57,9 +62,7 @@ public class SalesJPanel extends javax.swing.JPanel {
             }
         });
 
-        pic.setText("jLabel1");
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel2.setText("New Sale - POS");
 
         javax.swing.GroupLayout newSaleLayout = new javax.swing.GroupLayout(newSale);
@@ -67,26 +70,29 @@ public class SalesJPanel extends javax.swing.JPanel {
         newSaleLayout.setHorizontalGroup(
             newSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(newSaleLayout.createSequentialGroup()
-                .addComponent(pic, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pic, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                .addGap(5, 5, 5))
         );
         newSaleLayout.setVerticalGroup(
             newSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newSaleLayout.createSequentialGroup()
+            .addGroup(newSaleLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(newSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(newSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(pic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        menu.add(newSale, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 2, 224, 70));
+
+        waitingList.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(170, 170, 170), new java.awt.Color(170, 170, 170), null, null));
         waitingList.setMinimumSize(new java.awt.Dimension(100, 80));
 
         pic1.setText("jLabel1");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel3.setText("Wating List");
 
         javax.swing.GroupLayout waitingListLayout = new javax.swing.GroupLayout(waitingList);
@@ -96,7 +102,7 @@ public class SalesJPanel extends javax.swing.JPanel {
             .addGroup(waitingListLayout.createSequentialGroup()
                 .addComponent(pic1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
                 .addContainerGap())
         );
         waitingListLayout.setVerticalGroup(
@@ -104,75 +110,83 @@ public class SalesJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, waitingListLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(waitingListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pic1, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                    .addComponent(pic1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        waitingList1.setMinimumSize(new java.awt.Dimension(100, 80));
+        menu.add(waitingList, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 2, 210, 70));
+
+        printReceipt.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(170, 170, 170), new java.awt.Color(170, 170, 170), null, null));
+        printReceipt.setMinimumSize(new java.awt.Dimension(100, 80));
 
         pic2.setText("jLabel1");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel4.setText("Print Receipt");
 
-        javax.swing.GroupLayout waitingList1Layout = new javax.swing.GroupLayout(waitingList1);
-        waitingList1.setLayout(waitingList1Layout);
-        waitingList1Layout.setHorizontalGroup(
-            waitingList1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(waitingList1Layout.createSequentialGroup()
+        javax.swing.GroupLayout printReceiptLayout = new javax.swing.GroupLayout(printReceipt);
+        printReceipt.setLayout(printReceiptLayout);
+        printReceiptLayout.setHorizontalGroup(
+            printReceiptLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(printReceiptLayout.createSequentialGroup()
                 .addComponent(pic2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        waitingList1Layout.setVerticalGroup(
-            waitingList1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, waitingList1Layout.createSequentialGroup()
+        printReceiptLayout.setVerticalGroup(
+            printReceiptLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, printReceiptLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(waitingList1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pic2, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                .addGroup(printReceiptLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pic2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
-        menu.setLayout(menuLayout);
-        menuLayout.setHorizontalGroup(
-            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuLayout.createSequentialGroup()
-                .addComponent(newSale, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(waitingList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(waitingList1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 434, Short.MAX_VALUE))
-        );
-        menuLayout.setVerticalGroup(
-            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(newSale, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-            .addComponent(waitingList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(waitingList1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        menu.add(printReceipt, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 2, -1, 70));
 
+        jTable1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(166, 166, 166), 1, true));
         jTable1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jTable1.setForeground(new java.awt.Color(255, 102, 102));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
                 "Number", "Date", "Items", "Net Price", "Taxation", "Total Price", "Payment Method"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setGridColor(new java.awt.Color(166, 166, 166));
+        jTable1.setRowHeight(40);
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -185,10 +199,9 @@ public class SalesJPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -209,7 +222,7 @@ public class SalesJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel pic;
     private javax.swing.JLabel pic1;
     private javax.swing.JLabel pic2;
+    private javax.swing.JPanel printReceipt;
     private javax.swing.JPanel waitingList;
-    private javax.swing.JPanel waitingList1;
     // End of variables declaration//GEN-END:variables
 }
