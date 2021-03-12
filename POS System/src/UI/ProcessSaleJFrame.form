@@ -120,6 +120,9 @@
               <Dimension value="[80, 80]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="catalogMousePressed"/>
+          </Events>
 
           <Layout>
             <DimensionLayout dim="0">

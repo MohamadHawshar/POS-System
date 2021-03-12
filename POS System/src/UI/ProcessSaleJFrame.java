@@ -18,21 +18,22 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class ProcessSaleJFrame extends javax.swing.JFrame {
 
-    private SalesJPanel salesJPanel =new SalesJPanel();
+    private SalesJPanel salesJPanel = new SalesJPanel();
+    private ProductsJPanel productsJPanel = new ProductsJPanel();
     private Register register;
+
     /**
      * Creates new form processSaleJFrame
      */
     public ProcessSaleJFrame(Register register) {
-        this.register=register;
+        this.register = register;
         initComponents();
         initComponents2();
     }
 
-    private void initComponents2(){
-        jPanel1.add(salesJPanel);
-        salesJPanel.setVisible(false);
+    private void initComponents2() {
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -86,6 +87,11 @@ public class ProcessSaleJFrame extends javax.swing.JFrame {
         );
 
         catalog.setPreferredSize(new java.awt.Dimension(80, 80));
+        catalog.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                catalogMousePressed(evt);
+            }
+        });
 
         jLabel1.setText("Products");
 
@@ -139,22 +145,33 @@ public class ProcessSaleJFrame extends javax.swing.JFrame {
 
     private void salesPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salesPanelMousePressed
         // TODO add your handling code here:
+        jPanel1.add(salesJPanel);
         salesJPanel.setVisible(true);
-        
+        productsJPanel.setVisible(false);
+        repaint();
 
     }//GEN-LAST:event_salesPanelMousePressed
+
+    private void catalogMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_catalogMousePressed
+        // TODO add your handling code here:
+        jPanel1.add(productsJPanel);
+        salesJPanel.setVisible(false);
+        productsJPanel.setVisible(true);
+        repaint();
+
+    }//GEN-LAST:event_catalogMousePressed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[])  {
+    public static void main(String args[]) {
 
         try {
             /* Set the Nimbus look and feel */
             //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
             /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-            * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-            */
+             * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+             */
             try {
                 for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                     if ("Nimbus".equals(info.getName())) {
@@ -184,7 +201,7 @@ public class ProcessSaleJFrame extends javax.swing.JFrame {
             } catch (IllegalAccessException ex) {
                 Logger.getLogger(ProcessSaleJFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             /* Create and display the form */
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {

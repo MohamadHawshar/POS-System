@@ -11,7 +11,7 @@ package UI;
  */
 public class SalesJPanel extends javax.swing.JPanel {
 
-    private NewSaleJPanel newSaleJFrame = new NewSaleJPanel();
+    private NewSaleFrame newSaleJFrame = new NewSaleFrame();
 
     /**
      * Creates new form SalesJPanel
