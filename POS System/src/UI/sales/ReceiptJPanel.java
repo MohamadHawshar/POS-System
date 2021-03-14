@@ -5,6 +5,9 @@
  */
 package UI.sales;
 
+import Domain.Payments.LebanonTax;
+import Domain.Payments.Tax;
+import Domain.Payments.TaxAdapter;
 import Domain.Sales.Sale;
 
 /**
@@ -12,7 +15,7 @@ import Domain.Sales.Sale;
  * @author lenovo
  */
 public class ReceiptJPanel extends javax.swing.JPanel {
-    
+
     private Sale sale;
 
     /**
@@ -23,10 +26,18 @@ public class ReceiptJPanel extends javax.swing.JPanel {
     public ReceiptJPanel(Sale sale) {
         initComponents();
         this.sale = sale;
-        price.setText(Float.toString(sale.getPayment().getAmount())+" $");
-        tax.setText("tax");
-        totalPrice.setText("");
-        
+        price.setText(Float.toString(sale.getPayment().getAmount()) + " $");
+        tax.setText(Float.toString(taxCalculator()) + " $");
+        float price = sale.getPayment().getAmount() + taxCalculator();
+        totalPrice.setText(price + " $");
+
+    }
+
+    private float taxCalculator() {
+        float x = sale.getPayment().getAmount();
+        TaxAdapter tax = new LebanonTax(x);
+        float y = tax.taxPercentage(9);
+        return y;
     }
 
     /**
