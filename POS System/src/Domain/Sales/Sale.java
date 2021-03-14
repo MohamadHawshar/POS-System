@@ -19,14 +19,25 @@ public class Sale {
     private Payment payment;
     private Date date;
     private List<SalesLineItem> ls = new ArrayList<>();
+    private int saleID;
 
-
-    public Sale(boolean isComplete) {
+    public Sale(boolean isComplete, Date date,int saleID) {
         this.isComplete = isComplete;
+        this.date = date;
+        this.saleID=saleID;
     }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
+    
 
     public boolean isIsComplete() {
         return isComplete;
+    }
+
+    public int getSaleID() {
+        return saleID;
     }
 
     public void setIsComplete(boolean isComplete) {
@@ -36,15 +47,32 @@ public class Sale {
     public void becomeComplete(){
         isComplete = true;
     }
-    public void makeLineItem(Item item, int quantity){
-        ls.add(new SalesLineItem(quantity,item));
+    public SalesLineItem makeLineItem(Item item, int quantity,float price){
+        ls.add(new SalesLineItem(quantity,item,price));
+        return new SalesLineItem(quantity,item,price);
     }
     public void makePayment(float amount){
-        this.payment = new Payment(amount);
+        this.payment = new Payment(amount,saleID);
     }
     @Override
     public String toString() {
         return "Sale{" + "isComplete=" + isComplete + '}';
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public List<SalesLineItem> getLs() {
+        return ls;
+    }
+
+    public void setLs(List<SalesLineItem> ls) {
+        this.ls = ls;
     }
     
     

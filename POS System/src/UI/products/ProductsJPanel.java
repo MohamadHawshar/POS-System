@@ -3,7 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI;
+package UI.products;
+
+import Domain.Sales.Item;
+import Domain.Sales.ProductCatalog;
+import TechnicalServices.Persistence.Register;
+import Utilities.ProductsTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -11,13 +21,43 @@ package UI;
  */
 public class ProductsJPanel extends javax.swing.JPanel {
 
-    private AddProductsFrame addProductsFrame= new AddProductsFrame();
-    
+    private AddProductsFrame addProductsFrame;
+    private Register register = new Register();
+    private ProductsTableModel productTableModel = new ProductsTableModel();
+
     /**
      * Creates new form ProductsJPanel
+     *
+     * @param register
      */
-    public ProductsJPanel() {
+    public ProductsJPanel(Register register) {
+        this.register = register;
+        addProductsFrame = new AddProductsFrame(register);
         initComponents();
+        tableInitializer();
+        repaint();
+    }
+
+    private void tableInitializer() {
+        ProductCatalog catalog = register.getCatalog();
+
+        catalog.descriptions.values().stream().forEach((i) -> {
+            productTableModel.add(i);
+        });
+        jTable1.setModel(productTableModel);
+
+    }
+
+    private void updateTable() {
+        JButton save = addProductsFrame.button();
+        save.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                    productTableModel.removeAll();
+                    tableInitializer();
+                }
+        });
     }
 
     /**
@@ -157,13 +197,12 @@ public class ProductsJPanel extends javax.swing.JPanel {
 
     private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
         // TODO add your handling code here:
-        System.out.println("HHHHH");
+        updateTable();
         addProductsFrame.setVisible(true);
     }//GEN-LAST:event_jLabel3MousePressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        System.out.println("Buttom");
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

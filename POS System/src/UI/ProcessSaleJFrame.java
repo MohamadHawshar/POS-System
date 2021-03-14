@@ -5,7 +5,12 @@
  */
 package UI;
 
+import Domain.Sales.Sale;
+import UI.sales.SalesJPanel;
+import UI.products.ProductsJPanel;
 import TechnicalServices.Persistence.Register;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.LookAndFeel;
@@ -18,20 +23,29 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class ProcessSaleJFrame extends javax.swing.JFrame {
 
-    private SalesJPanel salesJPanel = new SalesJPanel();
-    private ProductsJPanel productsJPanel = new ProductsJPanel();
+    private SalesJPanel salesJPanel;
+    private ProductsJPanel productsJPanel;
     private Register register;
+    private List<Sale> ls;
 
     /**
      * Creates new form processSaleJFrame
+     *
+     * @param register
      */
-    public ProcessSaleJFrame(Register register) {
+    public ProcessSaleJFrame(Register register, List<Sale> ls) throws SQLException {
         this.register = register;
+        this.ls = ls;
         initComponents();
+        productsJPanel = new ProductsJPanel(this.register);
+        salesJPanel = new SalesJPanel(register,this.ls);
         initComponents2();
     }
 
     private void initComponents2() {
+        this.setLocationRelativeTo(null);
+        jPanel1.add(salesJPanel);
+        productsJPanel.setVisible(false);
     }
 
     /**
@@ -146,10 +160,9 @@ public class ProcessSaleJFrame extends javax.swing.JFrame {
     private void salesPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salesPanelMousePressed
         // TODO add your handling code here:
         jPanel1.add(salesJPanel);
-        salesJPanel.setVisible(true);
         productsJPanel.setVisible(false);
+        salesJPanel.setVisible(true);
         repaint();
-
     }//GEN-LAST:event_salesPanelMousePressed
 
     private void catalogMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_catalogMousePressed
@@ -164,55 +177,6 @@ public class ProcessSaleJFrame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-
-        try {
-            /* Set the Nimbus look and feel */
-            //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-            /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-             * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-             */
-            try {
-                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                    if ("Nimbus".equals(info.getName())) {
-                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                        break;
-                    }
-                }
-            } catch (ClassNotFoundException ex) {
-                java.util.logging.Logger.getLogger(ProcessSaleJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            } catch (InstantiationException ex) {
-                java.util.logging.Logger.getLogger(ProcessSaleJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
-                java.util.logging.Logger.getLogger(ProcessSaleJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-                java.util.logging.Logger.getLogger(ProcessSaleJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            }
-            try {
-                //</editor-fold>
-                //</editor-fold>
-                //</editor-fold>
-                //</editor-fold>
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(ProcessSaleJFrame.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InstantiationException ex) {
-                Logger.getLogger(ProcessSaleJFrame.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
-                Logger.getLogger(ProcessSaleJFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            /* Create and display the form */
-            java.awt.EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    new ProcessSaleJFrame(null).setVisible(true);
-                }
-            });
-        } catch (UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(ProcessSaleJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel catalog;
     private javax.swing.JLabel jLabel1;

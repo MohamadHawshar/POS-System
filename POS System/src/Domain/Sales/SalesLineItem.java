@@ -5,6 +5,8 @@
  */
 package Domain.Sales;
 
+import java.util.Objects;
+
 /**
  *
  * @author User
@@ -20,11 +22,15 @@ public class SalesLineItem {
         this.quantity = quantity;
     }
 
-    public SalesLineItem(int quantity, Item item) {
+    public SalesLineItem(int quantity, Item item,float packetPrice) {
         this.quantity = quantity;
         this.item = item;
+        this.packetPrice=packetPrice;
     }
 
+    public void setIdSale(int idSale) {
+        this.idSale = idSale;
+    }
 
     public Item getItem() {
         return item;
@@ -48,6 +54,27 @@ public class SalesLineItem {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final SalesLineItem other = (SalesLineItem) obj;
+        if (!Objects.equals(this.item, other.item)) {
+            return false;
+        }
+        return true;
     }
     
     @Override

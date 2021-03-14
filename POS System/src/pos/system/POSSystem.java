@@ -8,6 +8,7 @@ package pos.system;
 import Domain.Sales.Store;
 import TechnicalServices.Persistence.Register;
 import UI.ProcessSaleJFrame;
+import java.sql.SQLException;
 
 /**
  *
@@ -18,11 +19,17 @@ public class POSSystem {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        Store store = Store.instance;
-        store.setName("Lebanon");
-        Register register = store.getRegister();
-        ProcessSaleJFrame frame = new ProcessSaleJFrame(register);
+    public static void main(String[] args) throws SQLException {
+ 
+            Store store = Store.instance;
+            store.setName("Lebanon");
+            Register register = store.getRegister();
+            ProcessSaleJFrame frame = new ProcessSaleJFrame(register, store.getSalesList());
+            frame.setVisible(true);
+ 
+
+     
+
     }
-    
+
 }

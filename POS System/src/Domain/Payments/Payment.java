@@ -13,11 +13,21 @@ package Domain.Payments;
 public class Payment {
     private float amount;
     private int idPayment;
+    private String PaymentType;
+
+    public void setPaymentType(String PaymentType) {
+        this.PaymentType = PaymentType;
+    }
+
+    public String getPaymentType() {
+        return PaymentType;
+    }
 
     
     
-    public Payment(float amount) {
+    public Payment(float amount,int idPayment) {
         this.amount = amount;
+        this.idPayment=idPayment;
     }
 
     public int getIdPayment() {

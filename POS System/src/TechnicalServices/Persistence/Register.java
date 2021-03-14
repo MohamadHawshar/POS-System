@@ -5,6 +5,7 @@
  */
 package TechnicalServices.Persistence;
 
+import Domain.Sales.Item;
 import Domain.Sales.ProductCatalog;
 import Domain.Sales.Sale;
 import com.sun.jndi.ldap.PersistentSearchControl;
@@ -35,7 +36,7 @@ public class Register {
 
     }
 
-    public int makeNewSale() throws SQLException {
+    public Sale makeNewSale() throws SQLException {
 
         return PersistentStorage.instance.makeNewSale();
 
@@ -47,14 +48,17 @@ public class Register {
 
     }
     
-    public ResultSet getItem(int idItem){
-        return TransferFromDB.instance.getItem(idItem);
+    public Item getItem(int idItem){
+        return productCatalog.getItem(idItem);
     }
     
-    public ResultSet getCatalog(){
-        return TransferFromDB.instance.getCatalog();
+    public ProductCatalog getCatalog(){
+        return productCatalog;
     }
-
+    public void addItem(Item i) throws SQLException{
+        PersistentStorage.instance.addItem(i.getIdItem(), i.getItemName(), i.getPrice());
+        productCatalog.descriptions.put(i.getIdItem(), i);
+    }
     public static final Register instance = new Register();
 
     public void setProductCatalog(ProductCatalog productCatalog) {

@@ -50,4 +50,11 @@ public class ProductCatalog {
     public Item getItem(int id) {
         return descriptions.get(id);
     }
+
+    @Override
+    public String toString() {
+        return "ProductCatalog{" + "descriptions=" + descriptions + '}';
+    }
+    
+    
 }

@@ -3,7 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI;
+package UI.sales;
+
+import Domain.Sales.Sale;
+import TechnicalServices.Persistence.Register;
+import UI.sales.NewSaleFrame;
+import Utilities.SalesTableModel;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -11,16 +20,25 @@ package UI;
  */
 public class SalesJPanel extends javax.swing.JPanel {
 
-    private NewSaleFrame newSaleJFrame = new NewSaleFrame();
+    private NewSaleFrame newSaleJFrame ;
+    private Register register;
+    private SalesTableModel salesTableModel=new SalesTableModel();
+    private List<Sale> ls;
 
     /**
      * Creates new form SalesJPanel
      */
-    public SalesJPanel() {
-       
+    public SalesJPanel(Register register,List<Sale> ls) {
         initComponents();
+        this.register=register;
+        this.ls=ls;
+        jTable1.setModel(salesTableModel);
+        tableInitializer();
     }
 
+    private void tableInitializer(){
+            salesTableModel.add(ls);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -72,7 +90,7 @@ public class SalesJPanel extends javax.swing.JPanel {
             .addGroup(newSaleLayout.createSequentialGroup()
                 .addComponent(pic, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                 .addContainerGap())
         );
         newSaleLayout.setVerticalGroup(
@@ -82,10 +100,10 @@ public class SalesJPanel extends javax.swing.JPanel {
                 .addGroup(newSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pic, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addGap(0, 22, Short.MAX_VALUE))
         );
 
-        menu.add(newSale, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 2, 224, 70));
+        menu.add(newSale, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 2, 220, 75));
 
         waitingList.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 1, new java.awt.Color(170, 170, 170)));
         waitingList.setMinimumSize(new java.awt.Dimension(100, 80));
@@ -110,12 +128,12 @@ public class SalesJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, waitingListLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(waitingListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pic1, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                    .addComponent(pic1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        menu.add(waitingList, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 2, 210, 70));
+        menu.add(waitingList, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 2, 210, 75));
 
         printReceipt.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 1, new java.awt.Color(170, 170, 170)));
         printReceipt.setMinimumSize(new java.awt.Dimension(100, 80));
@@ -140,12 +158,12 @@ public class SalesJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, printReceiptLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(printReceiptLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
                     .addComponent(pic2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        menu.add(printReceipt, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 2, -1, 70));
+        menu.add(printReceipt, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 2, -1, 75));
 
         jTable1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(166, 166, 166), 1, true));
         jTable1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
@@ -206,7 +224,12 @@ public class SalesJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void newSaleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newSaleMousePressed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            newSaleJFrame= new NewSaleFrame(register);
+        } catch (SQLException ex) {
+            Logger.getLogger(SalesJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
         newSaleJFrame.setVisible(true);
     }//GEN-LAST:event_newSaleMousePressed
 
