@@ -40,7 +40,7 @@ public class SalesTableModel extends AbstractGuiTableModels<Sale> {
             case 3:
                 return i.getPayment().getAmount();
             case 4:
-                return "Payment Method";
+                return i.getPayment().getPaymentType();
             default:
                 return null;
         }

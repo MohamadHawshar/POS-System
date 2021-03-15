@@ -12,6 +12,7 @@ import java.util.Objects;
  * @author User
  */
 public class SalesLineItem {
+
     private int quantity;
     private float packetPrice = 0;
     private int idItem;
@@ -22,10 +23,10 @@ public class SalesLineItem {
         this.quantity = quantity;
     }
 
-    public SalesLineItem(int quantity, Item item,float packetPrice) {
+    public SalesLineItem(int quantity, Item item, float packetPrice) {
         this.quantity = quantity;
         this.item = item;
-        this.packetPrice=packetPrice;
+        this.packetPrice = packetPrice;
     }
 
     public void setIdSale(int idSale) {
@@ -41,7 +42,7 @@ public class SalesLineItem {
     }
 
     public float getPacketPrice() {
-         return packetPrice*quantity;
+        return packetPrice * quantity;
     }
 
     public void setPacketPrice(float packetPrice) {
@@ -76,12 +77,10 @@ public class SalesLineItem {
         }
         return true;
     }
-    
+
     @Override
     public String toString() {
-        return "SalesLineItem{" + "quantity=" + quantity + ", packetPrice=" + packetPrice + '}';
+        return item.getItemName() + "(" + quantity + ")";
     }
 
-
-    
 }

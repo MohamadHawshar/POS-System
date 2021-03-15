@@ -37,7 +37,10 @@ public class SalesJPanel extends javax.swing.JPanel {
     }
 
     private void tableInitializer(){
-            salesTableModel.add(ls);
+            for(Sale s:ls){
+                if(s.isIsComplete())
+                salesTableModel.add(s);
+            }
     }
     /**
      * This method is called from within the constructor to initialize the form.

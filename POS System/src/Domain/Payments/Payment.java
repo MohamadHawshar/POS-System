@@ -10,7 +10,7 @@ package Domain.Payments;
  *
  * @author User
  */
-public class Payment {
+public class Payment {  //this class will be the adaptee of Payment adapter
     private float amount;
     private int idPayment;
     private String PaymentType;

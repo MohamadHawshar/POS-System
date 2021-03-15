@@ -42,7 +42,4 @@ public class Tax {
         this.netAmount = netAmount;
     }
 
-
-    
-    
 }

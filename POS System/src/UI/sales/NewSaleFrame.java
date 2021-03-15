@@ -290,7 +290,7 @@ public class NewSaleFrame extends javax.swing.JFrame {
         Payment payment = new Payment(x, currentSale.getSaleID());
         currentSale.setPayment(payment);
         jPanel1.setVisible(false);
-        receiptJPanel = new ReceiptJPanel(currentSale);
+        receiptJPanel = new ReceiptJPanel(currentSale,register);
         jPanel2.add(receiptJPanel);
         receiptJPanel.setVisible(true);
 

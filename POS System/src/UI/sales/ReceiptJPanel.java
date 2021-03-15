@@ -5,10 +5,20 @@
  */
 package UI.sales;
 
+import Domain.Payments.CashPayment;
+import Domain.Payments.ChequePayment;
+import Domain.Payments.CreditPayment;
 import Domain.Payments.LebanonTax;
+import Domain.Payments.PaymentAdapter;
 import Domain.Payments.Tax;
 import Domain.Payments.TaxAdapter;
 import Domain.Sales.Sale;
+import TechnicalServices.Persistence.Register;
+import java.awt.Component;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JButton;
 
 /**
  *
@@ -17,20 +27,27 @@ import Domain.Sales.Sale;
 public class ReceiptJPanel extends javax.swing.JPanel {
 
     private Sale sale;
+    private Register register;
+    private PaymentAdapter pa;
 
     /**
      * Creates new form ReceiptJPanel
      *
      * @param sale
      */
-    public ReceiptJPanel(Sale sale) {
+    public ReceiptJPanel(Sale sale, Register register) {
         initComponents();
         this.sale = sale;
+        this.register = register;
+        setPrices();
+    }
+
+    private void setPrices() {
         price.setText(Float.toString(sale.getPayment().getAmount()) + " $");
         tax.setText(Float.toString(taxCalculator()) + " $");
         float price = sale.getPayment().getAmount() + taxCalculator();
+        sale.getPayment().setAmount(price);
         totalPrice.setText(price + " $");
-
     }
 
     private float taxCalculator() {
@@ -57,10 +74,13 @@ public class ReceiptJPanel extends javax.swing.JPanel {
         tax = new javax.swing.JLabel();
         totalPrice = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        cashButton = new javax.swing.JButton();
+        creditButton = new javax.swing.JButton();
+        checkButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Price :");
 
@@ -114,11 +134,28 @@ public class ReceiptJPanel extends javax.swing.JPanel {
                         .addContainerGap())))
         );
 
-        jButton1.setText("Cash Payment");
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(486, 0, -1, -1));
 
-        jButton2.setText("Credit Payment");
+        cashButton.setText("Cash Payment");
+        cashButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cashButtonActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Cheque Payment");
+        creditButton.setText("Credit Payment");
+        creditButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                creditButtonActionPerformed(evt);
+            }
+        });
+
+        checkButton.setText("Check Payment");
+        checkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -127,63 +164,78 @@ public class ReceiptJPanel extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE))
+                    .addComponent(cashButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(creditButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(checkButton, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cashButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(creditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 382, Short.MAX_VALUE)
-        );
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 225));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel3.setLayout(new java.awt.BorderLayout());
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        jLabel4.setText("Choose A Payment Method");
+        jLabel4.setPreferredSize(new java.awt.Dimension(481, 80));
+        jPanel3.add(jLabel4, java.awt.BorderLayout.PAGE_START);
+
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 232, 840, 272));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cashButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashButtonActionPerformed
+        // TODO add your handling code here:
+        pa = new CashPayment(sale.getPayment().getAmount(), sale.getSaleID(), register);
+        try {
+            jPanel3.add((Component) pa);
+            jLabel4.setVisible(false);
+            pa.proceed();
+        } catch (SQLException ex) {
+            Logger.getLogger(ReceiptJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_cashButtonActionPerformed
+
+    private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
+        // TODO add your handling code here:
+        pa = new ChequePayment(sale.getPayment().getAmount(), sale.getSaleID(), register);
+        try {
+            jPanel3.add((Component) pa);
+            jLabel4.setVisible(false);
+            pa.proceed();
+        } catch (SQLException ex) {
+            Logger.getLogger(ReceiptJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_checkButtonActionPerformed
+
+    private void creditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditButtonActionPerformed
+        // TODO add your handling code here:
+        pa = new CreditPayment(sale.getPayment().getAmount(), sale.getSaleID(), register);
+        jPanel3.add((Component) pa);
+        jLabel4.setVisible(false);
+        // the proceed method isnt here because we're checking if the credit card is valid first
+        //its used in the button check in class CreditPayment
+        //when the button is pressed it will check if the  credit card is valid and apply the proceed method
+    }//GEN-LAST:event_creditButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton cashButton;
+    private javax.swing.JButton checkButton;
+    private javax.swing.JButton creditButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

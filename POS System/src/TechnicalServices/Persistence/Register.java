@@ -42,9 +42,9 @@ public class Register {
 
     }
 
-    public void makePayment(float amount , int idSale) throws SQLException {
+    public void makePayment(float amount , int idSale,String type) throws SQLException {
 
-        PersistentStorage.instance.makePayment(amount, idSale);
+        PersistentStorage.instance.makePayment(amount, idSale,type);
 
     }
     

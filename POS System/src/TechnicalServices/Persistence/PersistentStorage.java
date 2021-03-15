@@ -19,10 +19,10 @@ import java.util.logging.Logger;
  */
 public class PersistentStorage {
 
-    private String endSaleString = "UPDATE `pos`.`sale` SET `isCompleted` = True WHERE `idSale` = ?;";
+    private String endSaleString = "UPDATE `mydb`.`sale` SET `isCompleted` = True WHERE `idSale` = ?;";
     private String enterLineItemString = "INSERT INTO `mydb`.`salelineitem` (`Item_idItem`, `Sale_idSale`, `quantity`, `TotalPrice`) VALUES (?,?,?,?);";
     private String makeNewSaleString = "INSERT INTO `mydb`.`sale` (`isCompleted`,`Date`) VALUES (?,?);";
-    private String makePaymentString = "INSERT INTO `mydb`.`payment` ( `Amount`, `Sale_SaleID`) VALUES (?,?);";
+    private String makePaymentString = "INSERT INTO `mydb`.`payment` ( `Amount`, `Sale_SaleID`,`PaymentType`) VALUES (?,?,?);";
     private String enterItemString = "INSERT INTO `mydb`.`item` (`idItem`, `ItemName`, `Price`) VALUES (?,?,?); ";
     private String getSaleIDString = "SELECT idSale FROM mydb.sale ORDER BY idSale DESC LIMIT 1";
 
@@ -87,13 +87,11 @@ public class PersistentStorage {
         return s;
     }
 
-    public void makePayment(float amount, int idSale) throws SQLException {
+    public void makePayment(float amount, int idSale,String type) throws SQLException {
         //TODO
-        long millis = System.currentTimeMillis();
-        makePaymentStmt.setDate(1, new java.sql.Date(millis));
-        makePaymentStmt.setFloat(2, amount);
-        makePaymentStmt.setBoolean(3, true);
-        makePaymentStmt.setInt(4, idSale);
+        makePaymentStmt.setFloat(1, amount);
+        makePaymentStmt.setInt(2, idSale);
+        makePaymentStmt.setString(3, type);
         makePaymentStmt.executeUpdate();
     }
 
