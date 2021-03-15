@@ -159,6 +159,7 @@ public class NewSaleFrame extends javax.swing.JFrame {
         );
 
         jTable1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(122, 138, 222));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
