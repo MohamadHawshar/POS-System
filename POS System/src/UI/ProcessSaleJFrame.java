@@ -80,9 +80,11 @@ public class ProcessSaleJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("sale");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/sale_blue_65x60.png"))); // NOI18N
 
-        jLabel3.setText("sale");
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel3.setText("Sale");
 
         javax.swing.GroupLayout salesPanelLayout = new javax.swing.GroupLayout(salesPanel);
         salesPanel.setLayout(salesPanelLayout);
@@ -107,16 +109,18 @@ public class ProcessSaleJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Products");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/product_blue (1).png"))); // NOI18N
 
-        jLabel4.setText("jLabel4");
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel4.setText("Products");
 
         javax.swing.GroupLayout catalogLayout = new javax.swing.GroupLayout(catalog);
         catalog.setLayout(catalogLayout);
         catalogLayout.setHorizontalGroup(
             catalogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         catalogLayout.setVerticalGroup(
             catalogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -58,9 +58,6 @@ public class SalesJPanel extends javax.swing.JPanel {
         waitingList = new javax.swing.JPanel();
         pic1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        printReceipt = new javax.swing.JPanel();
-        pic2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -83,6 +80,8 @@ public class SalesJPanel extends javax.swing.JPanel {
             }
         });
 
+        pic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/register.png"))); // NOI18N
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel2.setText("New Sale - POS");
 
@@ -101,7 +100,7 @@ public class SalesJPanel extends javax.swing.JPanel {
             .addGroup(newSaleLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(newSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pic, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(pic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 22, Short.MAX_VALUE))
         );
@@ -111,7 +110,7 @@ public class SalesJPanel extends javax.swing.JPanel {
         waitingList.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 1, new java.awt.Color(170, 170, 170)));
         waitingList.setMinimumSize(new java.awt.Dimension(100, 80));
 
-        pic1.setText("jLabel1");
+        pic1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/waiting-list.png"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel3.setText("Wating List");
@@ -131,46 +130,16 @@ public class SalesJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, waitingListLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(waitingListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pic1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                    .addComponent(pic1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         menu.add(waitingList, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 2, 210, 75));
 
-        printReceipt.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 1, new java.awt.Color(170, 170, 170)));
-        printReceipt.setMinimumSize(new java.awt.Dimension(100, 80));
-
-        pic2.setText("jLabel1");
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel4.setText("Print Receipt");
-
-        javax.swing.GroupLayout printReceiptLayout = new javax.swing.GroupLayout(printReceipt);
-        printReceipt.setLayout(printReceiptLayout);
-        printReceiptLayout.setHorizontalGroup(
-            printReceiptLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(printReceiptLayout.createSequentialGroup()
-                .addComponent(pic2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        printReceiptLayout.setVerticalGroup(
-            printReceiptLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, printReceiptLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(printReceiptLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                    .addComponent(pic2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        menu.add(printReceipt, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 2, -1, 75));
-
         jTable1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(166, 166, 166), 1, true));
-        jTable1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(255, 102, 102));
+        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(118, 138, 222));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -240,15 +209,12 @@ public class SalesJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JPanel menu;
     private javax.swing.JPanel newSale;
     private javax.swing.JLabel pic;
     private javax.swing.JLabel pic1;
-    private javax.swing.JLabel pic2;
-    private javax.swing.JPanel printReceipt;
     private javax.swing.JPanel waitingList;
     // End of variables declaration//GEN-END:variables
 }

@@ -109,7 +109,7 @@ public class NewSaleFrame extends javax.swing.JFrame {
         itemPrice.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         itemPrice.setText("Price :");
 
-        addButton.setText("ADD");
+        addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add.png"))); // NOI18N
         addButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 addButtonMousePressed(evt);
@@ -160,6 +160,7 @@ public class NewSaleFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -179,6 +180,8 @@ public class NewSaleFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setGridColor(new java.awt.Color(166, 166, 166));
+        jTable1.setRowHeight(40);
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -270,6 +273,8 @@ public class NewSaleFrame extends javax.swing.JFrame {
             currentSale.makeLineItem(currentItem, Integer.parseInt(quantity.getText()), x);
             register.enterLineltem(currentItem.getIdItem(), currentSale.getSaleID(), Integer.parseInt(quantity.getText()));
             receiptTableModel.add(currentSale.getLs());
+            codeTextField.setText("");
+            quantity.setText("1");
         } catch (com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException ex) {
             jTable1.setModel(receiptTableModel);
 
