@@ -67,17 +67,22 @@ public class AddProductsFrame extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(122, 138, 222));
         jLabel1.setText("Add New Product");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(122, 138, 222));
         jLabel2.setText("Barcode (ID) ");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(122, 138, 222));
         jLabel3.setText("Description");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(122, 138, 222));
         jLabel4.setText("Sale Price");
 
+        jButton1.setForeground(new java.awt.Color(122, 138, 222));
         jButton1.setText("Save");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -85,6 +90,7 @@ public class AddProductsFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setForeground(new java.awt.Color(122, 138, 222));
         jButton2.setText("Cancel");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

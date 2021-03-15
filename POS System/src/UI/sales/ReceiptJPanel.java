@@ -82,11 +82,23 @@ public class ReceiptJPanel extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(122, 138, 222));
         jLabel1.setText("Price :");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(122, 138, 222));
         jLabel2.setText("Tax :");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(122, 138, 222));
         jLabel3.setText("Total Price :");
+
+        price.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        tax.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        totalPrice.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -102,7 +114,7 @@ public class ReceiptJPanel extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(totalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -136,6 +148,7 @@ public class ReceiptJPanel extends javax.swing.JPanel {
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(486, 0, -1, -1));
 
+        cashButton.setForeground(new java.awt.Color(122, 138, 222));
         cashButton.setText("Cash Payment");
         cashButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,6 +156,7 @@ public class ReceiptJPanel extends javax.swing.JPanel {
             }
         });
 
+        creditButton.setForeground(new java.awt.Color(122, 138, 222));
         creditButton.setText("Credit Payment");
         creditButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,6 +164,7 @@ public class ReceiptJPanel extends javax.swing.JPanel {
             }
         });
 
+        checkButton.setForeground(new java.awt.Color(122, 138, 222));
         checkButton.setText("Check Payment");
         checkButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,6 +201,7 @@ public class ReceiptJPanel extends javax.swing.JPanel {
         jPanel3.setLayout(new java.awt.BorderLayout());
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(122, 138, 222));
         jLabel4.setText("Choose A Payment Method");
         jLabel4.setPreferredSize(new java.awt.Dimension(481, 80));
         jPanel3.add(jLabel4, java.awt.BorderLayout.PAGE_START);

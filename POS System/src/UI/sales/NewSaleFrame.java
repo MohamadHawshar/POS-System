@@ -33,6 +33,7 @@ public class NewSaleFrame extends javax.swing.JFrame {
      */
     public NewSaleFrame(Register register) throws SQLException {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.register = register;
         currentSale = register.makeNewSale();
         jTable1.setModel(receiptTableModel);
@@ -51,7 +52,6 @@ public class NewSaleFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         pricePanel = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         topPanel = new javax.swing.JPanel();
         codeTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -62,18 +62,15 @@ public class NewSaleFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jPanel2.setLayout(new java.awt.BorderLayout());
 
+        jButton1.setForeground(new java.awt.Color(122, 138, 222));
         jButton1.setText("End Sale");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        jButton2.setText("Delete");
 
         javax.swing.GroupLayout pricePanelLayout = new javax.swing.GroupLayout(pricePanel);
         pricePanel.setLayout(pricePanelLayout);
@@ -82,20 +79,17 @@ public class NewSaleFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pricePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pricePanelLayout.setVerticalGroup(
             pricePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pricePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pricePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
+        codeTextField.setForeground(new java.awt.Color(122, 138, 222));
         codeTextField.setToolTipText("Code, or use the Barcode Scanner");
         codeTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -104,9 +98,11 @@ public class NewSaleFrame extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(122, 138, 222));
         jLabel1.setText("QTY.");
 
         itemPrice.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        itemPrice.setForeground(new java.awt.Color(122, 138, 222));
         itemPrice.setText("Price :");
 
         addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add.png"))); // NOI18N
@@ -117,8 +113,10 @@ public class NewSaleFrame extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(122, 138, 222));
         jLabel5.setText("Code :");
 
+        quantity.setForeground(new java.awt.Color(122, 138, 222));
         quantity.setText("1");
         quantity.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -275,6 +273,7 @@ public class NewSaleFrame extends javax.swing.JFrame {
             receiptTableModel.add(currentSale.getLs());
             codeTextField.setText("");
             quantity.setText("1");
+            itemPrice.setText("Price :");
         } catch (com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException ex) {
             jTable1.setModel(receiptTableModel);
 
@@ -295,7 +294,7 @@ public class NewSaleFrame extends javax.swing.JFrame {
         Payment payment = new Payment(x, currentSale.getSaleID());
         currentSale.setPayment(payment);
         jPanel1.setVisible(false);
-        receiptJPanel = new ReceiptJPanel(currentSale,register);
+        receiptJPanel = new ReceiptJPanel(currentSale, register);
         jPanel2.add(receiptJPanel);
         receiptJPanel.setVisible(true);
 
@@ -310,7 +309,6 @@ public class NewSaleFrame extends javax.swing.JFrame {
     private javax.swing.JTextField codeTextField;
     private javax.swing.JLabel itemPrice;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
